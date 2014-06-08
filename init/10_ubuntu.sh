@@ -39,8 +39,8 @@ sudo apt-get -qq dist-upgrade
 packages=(
   build-essential libssl-dev
   git-core
-  tree sl id3tool cowsay
-  nmap telnet
+  tree sl
+  telnet
   htop
 )
 
