@@ -1,20 +1,36 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-Plugin 'gmarik/Vundle'
+Bundle 'gmarik/vundle'
 
-Plugin 'tpope/vim-fireplace'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-classpath'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-classpath'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/paredit.vim'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'bling/vim-airline'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+
+set laststatus=2
+let g:airline_theme='dark'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+" let g:airline_branch_prefix = '⎇ '
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '⎇ '
+let g:airline_section_y = ""
+let g:airline_section_x = ""
+
+filetype plugin indent on
 
 syntax on
 set tabstop=4
@@ -85,3 +101,7 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+autocmd FileType clojure nnoremap <buffer> <localleader>e :Eval (clojure.repl/pst)<CR>
+autocmd FileType clojure nnoremap <buffer> <localleader>p :Eval (clojure.pprint/pp)<CR>
+
